@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Raksha Bandhan, Behen ❤️</title>
+<title>Happy Raksha Bandhan, Dii ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -15,19 +15,18 @@
     }
 
     body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #fff0f6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    overflow-x: hidden; /* Sirf horizontal scroll remove */
-    overflow-y: auto;   /* Vertical scroll allow */
-    position: relative;
-}
-
+        font-family: 'Poppins', sans-serif;
+        background-color: #fff0f6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+    }
 
     .container {
         max-width: 800px;
@@ -147,6 +146,7 @@
         justify-content: center;
         align-items: center;
         z-index: 9999;
+        flex-direction: column;
     }
 
     .video-overlay video {
@@ -155,34 +155,32 @@
         object-fit: contain;
     }
 
-    /* Beautiful custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px; /* Scrollbar width */
-}
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
 
-::-webkit-scrollbar-track {
-    background: #ffe4ec; /* Track color */
-    border-radius: 10px;
-}
+    ::-webkit-scrollbar-track {
+        background: #ffe4ec;
+        border-radius: 10px;
+    }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #ff80ab, #e91e63);
-    border-radius: 10px;
-    border: 2px solid #ffe4ec;
-}
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #ff80ab, #e91e63);
+        border-radius: 10px;
+        border: 2px solid #ffe4ec;
+    }
 
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #e91e63, #c2185b);
-}
-
-
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #e91e63, #c2185b);
+    }
 </style>
 </head>
 
 <body>
 
     <div class="container">
-        <h1 class="main-heading">Happy Raksha Bandhan, Behen ❤️</h1>
+        <h1 class="main-heading">Happy Raksha Bandhan, Arushree Dii ❤️</h1>
         <div class="rakhi-image">
             <img src="./—Pngtree—indian festival raksha bandhan poster_17415563.png" alt="Rakhi" style="width:80%; height:auto; border-radius:15px;">
         </div>
@@ -195,11 +193,11 @@
 
     <!-- Video Overlay -->
     <div class="video-overlay" id="videoOverlay">
-        <video src="rb.mp4" autoplay loop muted></video>
+        <video id="rakhiVideo" src="rb.mp4" autoplay loop muted></video>
     </div>
 
 <script>
-    // Random background emojis
+    // Floating emojis
     const emojis = ["💖", "💕", "❤️", "🎉", "💝", "💓", "✨"];
     function createEmoji() {
         const emoji = document.createElement("div");
@@ -209,16 +207,25 @@
         emoji.style.fontSize = Math.random() * 2 + 1 + "rem";
         emoji.style.animationDuration = Math.random() * 5 + 5 + "s";
         document.body.appendChild(emoji);
-
-        setTimeout(() => {
-            emoji.remove();
-        }, 10000);
+        setTimeout(() => emoji.remove(), 10000);
     }
     setInterval(createEmoji, 200);
 
-    // Video overlay click event
+    // Play video + song on button click
     document.getElementById('playVideo').addEventListener('click', function () {
-        document.getElementById('videoOverlay').style.display = 'flex';
+        const overlay = document.getElementById('videoOverlay');
+        const song = document.getElementById('bgSong');
+        const video = document.getElementById('rakhiVideo');
+
+        overlay.style.display = 'flex';
+
+        // Unmute video if needed
+        video.muted = false;
+        video.play();
+
+        // Play song
+        song.loop = true;
+        song.play().catch(err => console.log("Autoplay blocked:", err));
     });
 </script>
 
